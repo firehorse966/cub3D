@@ -6,12 +6,11 @@
 /*   By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 12:15:59 by aiturria          #+#    #+#             */
-/*   Updated: 2024/09/08 14:46:10 by aiturria         ###   ########.fr       */
+/*   Updated: 2024/09/09 12:05:35 by aiturria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
-
 
 double	cb_getwallhit(t_game *game, mlx_texture_t *texture)
 {
@@ -66,7 +65,6 @@ uint32_t	cb_shading(t_game *game, uint32_t color)
 	shading_factor = 1.0 - (game->ray->distance / 150);
 	if (shading_factor < 0.2)
 		shading_factor = 0.2;
-
 	red = ((color >> 24) & 0xFF) * shading_factor;
 	green = ((color >> 16) & 0xFF) * shading_factor;
 	blue = ((color >> 8) & 0xFF) * shading_factor;
@@ -88,29 +86,7 @@ void	cb_paintwall(t_game *game, int top, int bottom, uint32_t color)
 	move = texture->height / game->ray->height;
 	pixely = (top - (SCREEN_H / 2) + (game->ray->height / 2)) * move;
 	if (pixely < 0)
-		pixely = 0;/* void	cb_paintwall(t_game *game, int top, int bottom, double height)
-{
-	mlx_texture_t	*texture;
-	uint32_t		*pixel;
-	double			wallhit;
-	double			pixely;
-	double			move;
-
-	texture = cb_findtexture(game);
-	pixel = (uint32_t *) texture->pixels;
-	wallhit = cb_getwallhit(game, texture);
-	move = texture->height / height;
-	pixely = (top - (SCREEN_H / 2) + (height / 2)) * move;
-	if (pixely < 0)
 		pixely = 0;
-	while (top < bottom)
-	{
-		mlx_put_pixel(game->img, game->ray->index, top++,
-			cb_revbytes(pixel[(int)wallhit + (int)pixely * texture->width]));
-		pixely += move;
-	}
-} */
-
 	while (top < bottom)
 	{
 		color = cb_revbytes(pixel[(int)wallhit + (int)pixely * texture->width]);
@@ -119,7 +95,6 @@ void	cb_paintwall(t_game *game, int top, int bottom, uint32_t color)
 		pixely += move;
 	}
 }
-
 
 void	cb_drawing(t_game *game)
 {

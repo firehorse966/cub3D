@@ -6,7 +6,7 @@
 /*   By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/08 11:15:17 by aiturria          #+#    #+#             */
-/*   Updated: 2024/09/08 11:15:25 by aiturria         ###   ########.fr       */
+/*   Updated: 2024/09/09 10:34:56 by aiturria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ static void	cb_savemap(t_game *game, char *map)
 	game->map->map2d[i] = NULL;
 	close(fd);
 }
-
 
 int	main(int argc, char **argv)
 {

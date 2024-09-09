@@ -6,7 +6,7 @@
 /*   By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 16:05:13 by aiturria          #+#    #+#             */
-/*   Updated: 2024/09/08 11:16:36 by aiturria         ###   ########.fr       */
+/*   Updated: 2024/09/09 12:08:06 by aiturria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ void	cb_movements(t_game *game, int move)
 	cb_movecheck(game, posx, posy);
 }
 
-
 /*void	cb_movements(t_game *game, int move)
 {
 	float posx;
@@ -90,7 +89,6 @@ void	cb_movements(t_game *game, int move)
 		posx *= -1;
 		posy *= -1;
 	}
-	//printf("Move: %d, Angle: %f, PosX: %f, PosY: %f\n", move, game->pyr->angle, posx, posy);
 	cb_movecheck(game, posx, posy);
 }*/
 
@@ -108,9 +106,7 @@ void	cb_rotate(t_game *game, int side)
 		if (game->pyr->angle < 0)
 			game->pyr->angle += 2 * M_PI;
 	}
-	//printf("Side: %d, Angle: %f\n", side, game->pyr->angle);
 }
-
 
 void	cb_keypress(mlx_key_data_t keydata, void *data)
 {

@@ -6,7 +6,7 @@
 /*   By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 14:13:51 by aiturria          #+#    #+#             */
-/*   Updated: 2024/09/08 11:17:17 by aiturria         ###   ########.fr       */
+/*   Updated: 2024/09/09 12:08:35 by aiturria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,3 @@ void	cb_initgame(t_game *game)
 	mlx_loop_hook(game->mlx42, &cb_newwindow, game);
 	mlx_loop(game->mlx42);
 }
-

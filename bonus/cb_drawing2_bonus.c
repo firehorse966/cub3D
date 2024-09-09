@@ -6,7 +6,7 @@
 /*   By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 10:16:51 by aiturria          #+#    #+#             */
-/*   Updated: 2024/09/08 14:28:20 by aiturria         ###   ########.fr       */
+/*   Updated: 2024/09/09 12:03:56 by aiturria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ void	cb_opendoor2(t_game *game, int doorx, int doory)
 		game->open = 1;
 	}
 }
-
 
 void	cb_opendoor(t_game *game)
 {
