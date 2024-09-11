@@ -6,7 +6,7 @@
 /*   By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 16:05:13 by aiturria          #+#    #+#             */
-/*   Updated: 2024/09/09 12:08:06 by aiturria         ###   ########.fr       */
+/*   Updated: 2024/09/10 16:51:57 by aiturria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,13 @@ void	cb_movements(t_game *game, int move)
 
 	if (move == 1)
 	{
-		posx = cos(game->pyr->angle - M_PI / 2) * PLAYER_SPEED;
-		posy = -sin(game->pyr->angle - M_PI / 2) * PLAYER_SPEED;
+		posx = cos(game->pyr->angle + M_PI / 2) * PLAYER_SPEED;
+		posy = -sin(game->pyr->angle + M_PI / 2) * PLAYER_SPEED;
 	}
 	else if (move == 2)
 	{
-		posx = cos(game->pyr->angle + M_PI / 2) * PLAYER_SPEED;
-		posy = -sin(game->pyr->angle + M_PI / 2) * PLAYER_SPEED;
+		posx = cos(game->pyr->angle - M_PI / 2) * PLAYER_SPEED;
+		posy = -sin(game->pyr->angle - M_PI / 2) * PLAYER_SPEED;
 	}
 	else if (move == 3)
 	{
@@ -94,7 +94,7 @@ void	cb_movements(t_game *game, int move)
 
 void	cb_rotate(t_game *game, int side)
 {
-	if (side == 2)
+	if (side == 1)
 	{
 		game->pyr->angle += ROT_SPEED;
 		if (game->pyr->angle > 2 * M_PI)

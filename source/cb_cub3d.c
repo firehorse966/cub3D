@@ -6,7 +6,7 @@
 /*   By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/08 11:15:17 by aiturria          #+#    #+#             */
-/*   Updated: 2024/09/09 10:34:56 by aiturria         ###   ########.fr       */
+/*   Updated: 2024/09/10 16:42:45 by aiturria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,11 @@ void	cb_freeall(t_game *game)
 	free(game->map);
 	free(game->pyr);
 	free(game->ray);
+	mlx_delete_texture(game->texture->north);
+	mlx_delete_texture(game->texture->south);
+	mlx_delete_texture(game->texture->east);
+	mlx_delete_texture(game->texture->west);
+	free(game->texture);
 	mlx_delete_image(game->mlx42, game->img);
 	mlx_close_window(game->mlx42);
 	mlx_terminate(game->mlx42);

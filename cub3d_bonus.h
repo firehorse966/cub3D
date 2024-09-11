@@ -6,7 +6,7 @@
 /*   By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 11:52:22 by aiturria          #+#    #+#             */
-/*   Updated: 2024/09/08 14:51:37 by aiturria         ###   ########.fr       */
+/*   Updated: 2024/09/10 17:03:28 by aiturria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ typedef struct s_map
 	int		playery;
 	int		width;
 	int		height;
-	int		*rgb;
+	int		rgb[2];
 }	t_map;
 
 typedef struct s_game

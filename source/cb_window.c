@@ -6,7 +6,7 @@
 /*   By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 14:13:51 by aiturria          #+#    #+#             */
-/*   Updated: 2024/09/09 12:08:35 by aiturria         ###   ########.fr       */
+/*   Updated: 2024/09/11 14:55:41 by aiturria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,31 @@ void	cb_newwindow(void *data)
 	mlx_image_to_window(game->mlx42, game->img, 0, 0);
 }
 
+void	cb_loadtextures(t_game *game)
+{
+	game->texture->north = mlx_load_png("./images/metal352.png");
+	if (game->texture->north == NULL)
+		cb_error(game, "Error: loading MLX texture");
+	game->texture->south = mlx_load_png("./images/metal354.png");
+	if (game->texture->south == NULL)
+		cb_error(game, "Error: loading MLX texture");
+	game->texture->east = mlx_load_png("./images/metal353.png");
+	if (game->texture->east == NULL)
+		cb_error(game, "Error: loading MLX texture");
+	game->texture->west = mlx_load_png("./images/metal351.png");
+	if (game->texture->west == NULL)
+		cb_error(game, "Error: loading MLX texture");
+}
+
 void	cb_playerangle(t_game *game)
 {
 	char	c;
 
 	c = game->map->map2d[game->map->playery][game->map->playerx];
 	if (c == 'N')
-		game->pyr->angle = 3 * M_PI / 2;
-	if (c == 'S')
 		game->pyr->angle = M_PI / 2;
+	if (c == 'S')
+		game->pyr->angle = 3 * M_PI / 2;
 	if (c == 'E')
 		game->pyr->angle = 0;
 	if (c == 'W')
@@ -48,12 +64,15 @@ void	cb_initgame(t_game *game)
 		cb_error(game, "Error: parameters outside allowed range");
 	game->pyr = malloc(sizeof(t_player));
 	game->ray = malloc(sizeof(t_ray));
+	game->texture = malloc(sizeof(t_texture));
+	mlx_set_setting(MLX_STRETCH_IMAGE, true);
 	game->mlx42 = mlx_init(SCREEN_W, SCREEN_H, "cub 3D", true);
 	if (!game->mlx42)
 		cb_error(game, "Error: MLX42 window did not open");
 	game->map->playerx = 9;
 	game->map->playery = 5;
 	cb_playerangle(game);
+	cb_loadtextures(game);
 	mlx_key_hook(game->mlx42, &cb_keypress, game);
 	mlx_loop_hook(game->mlx42, &cb_newwindow, game);
 	mlx_loop(game->mlx42);

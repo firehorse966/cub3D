@@ -6,7 +6,7 @@
 /*   By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 11:30:23 by aiturria          #+#    #+#             */
-/*   Updated: 2024/09/08 13:04:25 by aiturria         ###   ########.fr       */
+/*   Updated: 2024/09/11 15:06:24 by aiturria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	cb_paintsquare(t_game *game, int x, int y, int color)
 	newy = (SCREEN_H * start) + y;
 	while (newy < (SCREEN_H * start) + y + SIZE)
 	{
-		newx = (SCREEN_W * start) + (SCREEN_W / 4) - (x + SIZE);
-		while (newx < (SCREEN_W * start) + (SCREEN_W / 4) - x)
+		newx = (SCREEN_W * start) + x;
+		while (newx < (SCREEN_W * start) + x + SIZE)
 			mlx_put_pixel(game->img, newx++, newy, color);
 		newy++;
 	}
@@ -37,7 +37,7 @@ void	cb_paintplayer(t_game *game)
 	int	pyrx;
 	int	pyry;
 
-	pyrx = (SCREEN_W * 0.70) + (SCREEN_W / 4) - (game->pyr->pyrx);
+	pyrx = (SCREEN_W * 0.70) + game->pyr->pyrx;
 	pyry = (SCREEN_H * 0.70) + game->pyr->pyry;
 	rad = SIZE / 6;
 	y = -rad;
@@ -62,16 +62,16 @@ void	cb_paintlooking(t_game *game)
 	double	i;
 
 	i = 0;
-	angle = game->pyr->angle + M_PI + ((M_PI / 180) * 30);
-	while (angle >= game->pyr->angle + M_PI - ((M_PI / 180) * 30))
+	angle = game->pyr->angle + ((M_PI / 180) * 30);
+	while (angle >= game->pyr->angle - ((M_PI / 180) * 30))
 	{
-		beginx = SCREEN_W * 0.70 + (SCREEN_W / 4) - (game->pyr->pyrx);
+		beginx = SCREEN_W * 0.70 + game->pyr->pyrx;
 		beginy = (SCREEN_H * 0.70) + game->pyr->pyry;
 		i = 0;
 		while (i < 110)
 		{
 			beginx += cos(angle);
-			beginy += sin(angle);
+			beginy -= sin(angle);
 			mlx_put_pixel(game->img, beginx, beginy, CYAN);
 			i++;
 		}
@@ -102,4 +102,27 @@ void	cb_paintmap(t_game *game)
 	}
 	cb_paintplayer(game);
 	cb_paintlooking(game);
+}
+
+int	cb_position(float angle, float *first, float *step, int check)
+{
+	if (check)
+	{
+		if (angle > M_PI && angle < 2 * M_PI)
+		{
+			*first += SIZE;
+			return (-1);
+		}
+		*step *= -1;
+	}
+	else
+	{
+		if (!(angle > M_PI / 2 && angle < 3 * M_PI / 2))
+		{
+			*first += SIZE;
+			return (-1);
+		}
+		*step *= -1;
+	}
+	return (1);
 }

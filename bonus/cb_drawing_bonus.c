@@ -6,7 +6,7 @@
 /*   By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 12:15:59 by aiturria          #+#    #+#             */
-/*   Updated: 2024/09/09 12:05:35 by aiturria         ###   ########.fr       */
+/*   Updated: 2024/09/10 15:12:56 by aiturria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,14 @@ double	cb_getwallhit(t_game *game, mlx_texture_t *texture)
 
 	if (game->ray->vertwall == 1)
 	{
-		wallhit = fmodf((game->ray->verty * (texture->width / SIZE)),
-				texture->width);
-		if (game->ray->angle < M_PI / 2 || game->ray->angle > 1.5 * M_PI)
+		wallhit = fmodf((game->ray->verty / SIZE), 1.0) * texture->width;
+		if (game->ray->angle > M_PI / 2 && game->ray->angle < 1.5 * M_PI)
 			wallhit = texture->width - wallhit;
 	}
 	else
 	{
-		wallhit = fmodf((game->ray->horizx * (texture->width / SIZE)),
-				texture->width);
-		if (game->ray->angle > 0 && game->ray->angle < M_PI)
+		wallhit = fmodf((game->ray->horizx / SIZE), 1.0) * texture->width;
+		if (game->ray->angle > M_PI && game->ray->angle < 2 * M_PI)
 			wallhit = texture->width - wallhit;
 	}
 	return (wallhit);
@@ -40,9 +38,9 @@ mlx_texture_t	*cb_findtexture(t_game *game)
 		if (game->ray->doory == 1)
 			return (game->texture->door1);
 		else if (game->ray->angle > M_PI / 2 && game->ray->angle < 1.5 * M_PI)
-			return (game->texture->east);
-		else
 			return (game->texture->west);
+		else
+			return (game->texture->east);
 	}
 	else
 	{

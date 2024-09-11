@@ -6,34 +6,11 @@
 /*   By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 11:52:48 by aiturria          #+#    #+#             */
-/*   Updated: 2024/09/08 15:08:27 by aiturria         ###   ########.fr       */
+/*   Updated: 2024/09/11 15:06:29 by aiturria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d_bonus.h"
-
-int	cb_position(float angle, float *first, float *step, int check)
-{
-	if (check)
-	{
-		if (angle > M_PI && angle < 2 * M_PI)
-		{
-			*first += SIZE;
-			return (-1);
-		}
-		*step *= -1;
-	}
-	else
-	{
-		if (!(angle > M_PI / 2 && angle < 3 * M_PI / 2))
-		{
-			*first += SIZE;
-			return (-1);
-		}
-		*step *= -1;
-	}
-	return (1);
-}
 
 int	cb_wallcheckhorz(t_game *game, float x, float y)
 {
@@ -141,10 +118,10 @@ void	cb_raycasting(t_game *game)
 	double	vertical;
 	int		ray;
 
-	ray = 0;
+	ray = SCREEN_W;
 	game->ray->angle = fmod((game->pyr->angle - (game->pyr->fovrad / 2)
 				+ 2 * M_PI), 2 * M_PI);
-	while (ray < SCREEN_W)
+	while (ray > 0)
 	{
 		game->ray->vertwall = 0;
 		horizontal = cb_gethorizontal(game, game->ray->angle);
@@ -156,7 +133,7 @@ void	cb_raycasting(t_game *game)
 			game->ray->distance = vertical;
 			game->ray->vertwall = 1;
 		}
-		game->ray->index = ray++;
+		game->ray->index = ray--;
 		cb_drawing(game);
 		game->ray->angle += (game->pyr->fovrad / SCREEN_W);
 		game->ray->angle = fmod(game->ray->angle + 2 * M_PI, 2 * M_PI);

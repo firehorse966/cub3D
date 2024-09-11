@@ -6,7 +6,7 @@
 /*   By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 14:13:51 by aiturria          #+#    #+#             */
-/*   Updated: 2024/09/08 13:41:01 by aiturria         ###   ########.fr       */
+/*   Updated: 2024/09/11 14:23:04 by aiturria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ void	cb_playerangle(t_game *game)
 	if (c == 'S')
 		game->pyr->angle = 3 * M_PI / 2;
 	if (c == 'E')
-		game->pyr->angle = M_PI;
-	if (c == 'W')
 		game->pyr->angle = 0;
+	if (c == 'W')
+		game->pyr->angle = M_PI;
 	game->pyr->pyrx = (game->map->playerx * SIZE) + SIZE / 2;
 	game->pyr->pyry = (game->map->playery * SIZE) + SIZE / 2;
 	game->pyr->fovrad = (FOV * M_PI / 180);

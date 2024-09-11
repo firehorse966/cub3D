@@ -6,7 +6,7 @@
 /*   By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 11:52:22 by aiturria          #+#    #+#             */
-/*   Updated: 2024/09/08 11:17:59 by aiturria         ###   ########.fr       */
+/*   Updated: 2024/09/10 17:03:14 by aiturria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,14 @@
 # define RED 0xFF0000FF
 # define WHITE 0xFFFFFFFF
 
+typedef struct s_texture
+{
+	mlx_texture_t	*north;
+	mlx_texture_t	*south;
+	mlx_texture_t	*east;
+	mlx_texture_t	*west;
+}	t_texture;
+
 typedef struct s_player
 {
 	int		pyrx;
@@ -62,6 +70,7 @@ typedef struct s_ray
 	double	vertx;
 	double	verty;
 	double	distance;
+	double	height;
 }	t_ray;
 
 typedef struct s_map
@@ -73,7 +82,7 @@ typedef struct s_map
 	int		playery;
 	int		width;
 	int		height;
-	int		*rgb;
+	int		rgb[2];
 }	t_map;
 
 typedef struct s_game
@@ -83,6 +92,7 @@ typedef struct s_game
 	t_map			*map;
 	t_ray			*ray;
 	t_player		*pyr;
+	t_texture		*texture;
 }	t_game;
 
 //general functions
@@ -94,5 +104,7 @@ void	cb_initgame(t_game *game);
 void	cb_raycasting(t_game *game);
 void	cb_drawing(t_game *game);
 void	cb_keypress(mlx_key_data_t keydata, void *data);
+void	cb_paintboth(t_game *game, int top, int bottom);
+int		cb_revbytes(int c);
 
 #endif

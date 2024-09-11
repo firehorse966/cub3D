@@ -6,7 +6,7 @@
 /*   By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 16:05:13 by aiturria          #+#    #+#             */
-/*   Updated: 2024/09/09 12:06:09 by aiturria         ###   ########.fr       */
+/*   Updated: 2024/09/11 15:09:48 by aiturria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,18 @@ void	cb_bump(t_game *game)
 	if (game->ray->vertwall == 1)
 	{
 		if (game->ray->angle > M_PI / 2 && game->ray->angle < 1.5 * M_PI)
-			newx = game->pyr->pyrx + 20;
+			newx = game->pyr->pyrx + 10;
 		else
-			newx = game->pyr->pyrx - 20;
+			newx = game->pyr->pyrx - 10;
 		if (game->map->map2d[game->pyr->pyry / SIZE][newx / SIZE] != '1')
 			game->pyr->pyrx = newx;
 	}
 	else
 	{
 		if (game->ray->angle < M_PI)
-			newy = game->pyr->pyry + 20;
+			newy = game->pyr->pyry + 10;
 		else
-			newy = game->pyr->pyry - 20;
+			newy = game->pyr->pyry - 10;
 		if (game->map->map2d[newy / SIZE][game->pyr->pyrx / SIZE] != '1')
 			game->pyr->pyry = newy;
 	}
@@ -64,13 +64,13 @@ void	cb_movements(t_game *game, int move)
 
 	if (move == 1)
 	{
-		posx = cos(game->pyr->angle - M_PI / 2) * PLAYER_SPEED;
-		posy = -sin(game->pyr->angle - M_PI / 2) * PLAYER_SPEED;
+		posx = cos(game->pyr->angle + M_PI / 2) * PLAYER_SPEED;
+		posy = -sin(game->pyr->angle + M_PI / 2) * PLAYER_SPEED;
 	}
 	else if (move == 2)
 	{
-		posx = cos(game->pyr->angle + M_PI / 2) * PLAYER_SPEED;
-		posy = -sin(game->pyr->angle + M_PI / 2) * PLAYER_SPEED;
+		posx = cos(game->pyr->angle - M_PI / 2) * PLAYER_SPEED;
+		posy = -sin(game->pyr->angle - M_PI / 2) * PLAYER_SPEED;
 	}
 	else if (move == 3)
 	{
@@ -85,20 +85,20 @@ void	cb_movements(t_game *game, int move)
 	cb_movecheck(game, posx, posy);
 }
 
-/*void	cb_movements(t_game *game, int move)
+/* void	cb_movements(t_game *game, int move)
 {
-	float posx;
-	float posy;
+	float	posx;
+	float	posy;
 
 	if (move == 1)
 	{
-		posx = sin(game->pyr->angle) * PLAYER_SPEED;
-		posy = -cos(game->pyr->angle) * PLAYER_SPEED;
+		posx = -sin(game->pyr->angle) * PLAYER_SPEED;
+		posy = cos(game->pyr->angle) * PLAYER_SPEED;
 	}
 	if (move == 2)
 	{
-		posx = -sin(game->pyr->angle) * PLAYER_SPEED;
-		posy = cos(game->pyr->angle) * PLAYER_SPEED;
+		posx = sin(game->pyr->angle) * PLAYER_SPEED;
+		posy = -cos(game->pyr->angle) * PLAYER_SPEED;
 	}
 	if (move == 3)
 	{
@@ -110,18 +110,12 @@ void	cb_movements(t_game *game, int move)
 		posx = cos(game->pyr->angle) * PLAYER_SPEED;
 		posy = sin(game->pyr->angle) * PLAYER_SPEED;
 	}
-	if ((game->pyr->angle > M_PI * 0.60 && game->pyr->angle < M_PI * 1.40)
-		|| (game->pyr->angle < M_PI * 0.40 || game->pyr->angle > M_PI * 1.60))
-	{
-		posx *= -1;
-		posy *= -1;
-	}
 	cb_movecheck(game, posx, posy);
-}*/
+} */
 
 void	cb_rotate(t_game *game, int side)
 {
-	if (side == 2)
+	if (side == 1)
 	{
 		game->pyr->angle += ROT_SPEED;
 		if (game->pyr->angle > 2 * M_PI)

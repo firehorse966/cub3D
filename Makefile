@@ -6,7 +6,7 @@
 #    By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/04 14:01:02 by aiturria          #+#    #+#              #
-#    Updated: 2024/09/08 12:58:35 by aiturria         ###   ########.fr        #
+#    Updated: 2024/09/10 17:04:56 by aiturria         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ MLX42_BUILD_DIR = $(MLX42_DIR)/build
 INCLUDES = -I. -I$(LIBFT_DIR) -I$(MLX42_DIR)/include
 LIBS = -L$(LIBFT_DIR) -lft -L$(MLX42_BUILD_DIR) -lmlx42 -lm -lglfw
 
-SRCS = cb_cub3d.c cb_window.c cb_raycasting.c cb_drawing.c cb_movements.c
+SRCS = cb_cub3d.c cb_window.c cb_raycasting.c cb_drawing.c cb_movements.c \
+		cb_drawing2.c
 
 SRCS_BONUS = cb_cub3d_bonus.c cb_window_bonus.c cb_raycasting_bonus.c \
 			cb_drawing_bonus.c cb_movements_bonus.c cb_drawing2_bonus.c \

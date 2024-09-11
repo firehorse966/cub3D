@@ -6,7 +6,7 @@
 /*   By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 11:52:48 by aiturria          #+#    #+#             */
-/*   Updated: 2024/09/08 15:10:59 by aiturria         ###   ########.fr       */
+/*   Updated: 2024/09/11 14:59:31 by aiturria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,10 +112,10 @@ void	cb_raycasting(t_game *game)
 	double	vertical;
 	int		ray;
 
-	ray = 0;
+	ray = SCREEN_W;
 	game->ray->angle = fmod((game->pyr->angle - (game->pyr->fovrad / 2)
 				+ 2 * M_PI), 2 * M_PI);
-	while (ray < SCREEN_W)
+	while (ray > 0)
 	{
 		game->ray->vertwall = 0;
 		horizontal = cb_gethorizontal(game, game->ray->angle);
@@ -131,6 +131,6 @@ void	cb_raycasting(t_game *game)
 		cb_drawing(game);
 		game->ray->angle += (game->pyr->fovrad / SCREEN_W);
 		game->ray->angle = fmod(game->ray->angle + 2 * M_PI, 2 * M_PI);
-		ray++;
+		ray--;
 	}
 }
