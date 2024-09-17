@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: angcampo <angcampo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 11:52:22 by aiturria          #+#    #+#             */
-/*   Updated: 2024/09/10 17:03:14 by aiturria         ###   ########.fr       */
+/*   Updated: 2024/09/17 19:07:53 by angcampo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,15 @@
 # define RED 0xFF0000FF
 # define WHITE 0xFFFFFFFF
 
+// first on map
+# define F_ERROR 0
+# define F_COLORS 1
+# define F_TEXTURES 2
+
+// rgb array positions
+# define COLOR_F 0
+# define COLOR_C 1
+
 typedef struct s_texture
 {
 	mlx_texture_t	*north;
@@ -75,14 +84,14 @@ typedef struct s_ray
 
 typedef struct s_map
 {
-	char	**map2d;
-	int		rows;
-	int		cols;
-	int		playerx;
-	int		playery;
-	int		width;
-	int		height;
-	int		rgb[2];
+	char			**map2d;
+	int				rows;
+	int				cols;
+	int				playerx;
+	int				playery;
+	int				width;
+	int				height;
+	unsigned int	rgb[2];
 }	t_map;
 
 typedef struct s_game
@@ -98,6 +107,10 @@ typedef struct s_game
 //general functions
 void	cb_error(t_game *game, char *str);
 void	cb_freeall(t_game *game);
+
+//parsing
+int		cb_save_settings_line(t_game *game, char *line, int i, int fd);
+void	cb_savemap(t_game *game, char *file);
 
 //execution
 void	cb_initgame(t_game *game);

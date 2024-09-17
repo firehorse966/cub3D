@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+         #
+#    By: angcampo <angcampo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/01 11:32:27 by aiturria          #+#    #+#              #
-#    Updated: 2024/02/11 14:16:23 by aiturria         ###   ########.fr        #
+#    Updated: 2024/09/17 19:44:07 by angcampo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ OBJS_BONUS	= $(BONUS:.c=.o)
 
 all:	$(NAME)
 
-$(NAME):	$(OBJS) $(OBJS_BONUS) 
+$(NAME):	$(OBJS) $(OBJS_BONUS)
 	$(LIBC)	$(NAME)	$(OBJS)	$(OBJS_BONUS)
 
 bonus:	$(OBJS_BONUS)

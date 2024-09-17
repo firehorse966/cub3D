@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cb_window.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: angcampo <angcampo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 14:13:51 by aiturria          #+#    #+#             */
-/*   Updated: 2024/09/11 14:55:41 by aiturria         ###   ########.fr       */
+/*   Updated: 2024/09/17 16:54:04 by angcampo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	cb_newwindow(void *data)
 	mlx_image_to_window(game->mlx42, game->img, 0, 0);
 }
 
+/*
 void	cb_loadtextures(t_game *game)
 {
 	game->texture->north = mlx_load_png("./images/metal352.png");
@@ -39,6 +40,7 @@ void	cb_loadtextures(t_game *game)
 	if (game->texture->west == NULL)
 		cb_error(game, "Error: loading MLX texture");
 }
+*/
 
 void	cb_playerangle(t_game *game)
 {
@@ -64,7 +66,6 @@ void	cb_initgame(t_game *game)
 		cb_error(game, "Error: parameters outside allowed range");
 	game->pyr = malloc(sizeof(t_player));
 	game->ray = malloc(sizeof(t_ray));
-	game->texture = malloc(sizeof(t_texture));
 	mlx_set_setting(MLX_STRETCH_IMAGE, true);
 	game->mlx42 = mlx_init(SCREEN_W, SCREEN_H, "cub 3D", true);
 	if (!game->mlx42)
@@ -72,7 +73,6 @@ void	cb_initgame(t_game *game)
 	game->map->playerx = 9;
 	game->map->playery = 5;
 	cb_playerangle(game);
-	cb_loadtextures(game);
 	mlx_key_hook(game->mlx42, &cb_keypress, game);
 	mlx_loop_hook(game->mlx42, &cb_newwindow, game);
 	mlx_loop(game->mlx42);
