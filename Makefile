@@ -6,7 +6,7 @@
 #    By: angcampo <angcampo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/04 14:01:02 by aiturria          #+#    #+#              #
-#    Updated: 2024/09/17 19:08:36 by angcampo         ###   ########.fr        #
+#    Updated: 2024/09/18 19:01:53 by angcampo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ INCLUDES = -I. -I$(LIBFT_DIR) -I$(MLX42_DIR)/include
 LIBS = -L$(LIBFT_DIR) -lft -L$(MLX42_BUILD_DIR) -lmlx42 -lm -lglfw
 
 SRCS = cb_cub3d.c cb_window.c cb_raycasting.c cb_drawing.c cb_movements.c \
-		cb_drawing2.c cb_save_settings_line.c cb_savemap.c \
+		cb_drawing2.c cb_save_settings_line.c cb_savemap.c cb_check_map.c\
 
 SRCS_BONUS = cb_cub3d_bonus.c cb_window_bonus.c cb_raycasting_bonus.c \
 			cb_drawing_bonus.c cb_movements_bonus.c cb_drawing2_bonus.c \

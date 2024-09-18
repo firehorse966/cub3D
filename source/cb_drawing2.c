@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cd_drawing2.c                                      :+:      :+:    :+:   */
+/*   cb_drawing2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: angcampo <angcampo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 17:00:11 by aiturria          #+#    #+#             */
-/*   Updated: 2024/09/10 17:02:45 by aiturria         ###   ########.fr       */
+/*   Updated: 2024/09/18 17:35:37 by angcampo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,12 @@ void	cb_paintboth(t_game *game, int top, int bottom)
 
 	i = 0;
 	while (i < top)
-		mlx_put_pixel(game->img, game->ray->index, i++, CYAN);
+		mlx_put_pixel(game->img, game->ray->index, i++,
+			game->map->rgb[COLOR_C]);
 	i = bottom;
 	while (i < SCREEN_H)
-		mlx_put_pixel(game->img, game->ray->index, i++, GREEN);
+		mlx_put_pixel(game->img, game->ray->index, i++,
+			game->map->rgb[COLOR_F]);
 }
 
 int	cb_revbytes(int c)

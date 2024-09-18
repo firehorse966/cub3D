@@ -6,7 +6,7 @@
 /*   By: angcampo <angcampo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 11:52:22 by aiturria          #+#    #+#             */
-/*   Updated: 2024/09/17 19:07:53 by angcampo         ###   ########.fr       */
+/*   Updated: 2024/09/18 18:12:25 by angcampo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ typedef struct s_map
 {
 	char			**map2d;
 	int				rows;
-	int				cols;
 	int				playerx;
 	int				playery;
 	int				width;
@@ -111,6 +110,7 @@ void	cb_freeall(t_game *game);
 //parsing
 int		cb_save_settings_line(t_game *game, char *line, int i, int fd);
 void	cb_savemap(t_game *game, char *file);
+void	cb_check_map(t_game *game);
 
 //execution
 void	cb_initgame(t_game *game);

@@ -6,7 +6,7 @@
 /*   By: angcampo <angcampo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/08 11:15:17 by aiturria          #+#    #+#             */
-/*   Updated: 2024/09/17 19:13:49 by angcampo         ###   ########.fr       */
+/*   Updated: 2024/09/18 17:58:50 by angcampo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,10 @@ static int	correct_extension(const char *s1, const char *s2)
 	s = ft_strrchr(s1, '.');
 	return (!ft_strncmp(s, s2, ft_strlen(s2)));
 }
+/*
+valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes
+--log-file=valgrind-out.txt ./cub3d maps/map1.cub
+*/
 
 int	main(int argc, char **argv)
 {

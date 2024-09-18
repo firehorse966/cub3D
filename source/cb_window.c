@@ -6,7 +6,7 @@
 /*   By: angcampo <angcampo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 14:13:51 by aiturria          #+#    #+#             */
-/*   Updated: 2024/09/17 16:54:04 by angcampo         ###   ########.fr       */
+/*   Updated: 2024/09/18 18:16:15 by angcampo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,6 @@ void	cb_initgame(t_game *game)
 	game->mlx42 = mlx_init(SCREEN_W, SCREEN_H, "cub 3D", true);
 	if (!game->mlx42)
 		cb_error(game, "Error: MLX42 window did not open");
-	game->map->playerx = 9;
-	game->map->playery = 5;
 	cb_playerangle(game);
 	mlx_key_hook(game->mlx42, &cb_keypress, game);
 	mlx_loop_hook(game->mlx42, &cb_newwindow, game);

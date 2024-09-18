@@ -6,7 +6,7 @@
 /*   By: angcampo <angcampo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 15:36:12 by angcampo          #+#    #+#             */
-/*   Updated: 2024/09/17 19:42:19 by angcampo         ###   ########.fr       */
+/*   Updated: 2024/09/18 19:00:58 by angcampo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,13 +71,12 @@ static void	cb_save_map2d(t_game *game, int fd,
 	int		i;
 	char	*line;
 
-	game->map->map2d = (char **)ft_calloc(sizeof(char **), n_map_lines + 1);
+	game->map->map2d = (char **)ft_calloc(n_map_lines + 1, sizeof(char *));
 	if (!game->map->map2d)
 		cb_error(game, "Error: when allocating memory");
 	line = get_next_line(fd);
 	while (line && (n_set_lines-- > 0 || line[0] == '\n'))
 	{
-		printf("%s", line);
 		free(line);
 		line = get_next_line(fd);
 	}
@@ -89,6 +88,18 @@ static void	cb_save_map2d(t_game *game, int fd,
 	}
 	if (line)
 		cb_error(game, "Error: map has not been fully read");
+	game->map->rows = n_map_lines;
+}
+
+void	cb_print_map(t_game *game)
+{
+	int	i;
+
+	i = 0;
+	while (game && game->map && game->map->map2d && game->map->map2d[i])
+	{
+		printf("%s", game->map->map2d[i++]);
+	}
 }
 
 void	cb_savemap(t_game *game, char *file)
@@ -112,5 +123,5 @@ void	cb_savemap(t_game *game, char *file)
 		cb_error(game, "Error: while opening a file");
 	cb_save_map2d(game, fd, n_setting_lines, n_map_lines);
 	close(fd);
-	//cb_check_map(game);
+	cb_check_map(game);
 }
