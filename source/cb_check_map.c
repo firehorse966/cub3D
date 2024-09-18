@@ -6,7 +6,7 @@
 /*   By: angcampo <angcampo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 18:00:33 by angcampo          #+#    #+#             */
-/*   Updated: 2024/09/18 19:35:31 by angcampo         ###   ########.fr       */
+/*   Updated: 2024/09/18 19:40:33 by angcampo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,8 @@ void	cb_check_map(t_game *game)
 {
 	if (!check_characters(game))
 		cb_error(game, "Error: incorrect character found");
+	if (game->map->playerx == 0 && game->map->playery == 0)
+		cb_error(game, "Error: no player found");
 	if (!cb_map_is_closed(game))
 		cb_error(game, "Error: map is not closed");
 }
