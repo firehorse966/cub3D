@@ -1,3 +1,11 @@
+NO ./images/metal352.png
+SO ./images/metal351.png
+WE ./images/metal354.png
+EA ./images/metal353.png
+
+F 200,223,111
+C 0,255,255
+
 11111111111111111111
 10000000000000000001
 10000000000000000001

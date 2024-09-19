@@ -6,7 +6,7 @@
 /*   By: angcampo <angcampo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 11:52:22 by aiturria          #+#    #+#             */
-/*   Updated: 2024/09/18 18:12:25 by angcampo         ###   ########.fr       */
+/*   Updated: 2024/09/19 16:58:26 by angcampo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,6 @@
 # define ORANGE 0xFF9300FF
 # define RED 0xFF0000FF
 # define WHITE 0xFFFFFFFF
-
-// first on map
-# define F_ERROR 0
-# define F_COLORS 1
-# define F_TEXTURES 2
 
 // rgb array positions
 # define COLOR_F 0

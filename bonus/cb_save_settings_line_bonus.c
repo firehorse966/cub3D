@@ -6,11 +6,11 @@
 /*   By: angcampo <angcampo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 18:26:25 by angcampo          #+#    #+#             */
-/*   Updated: 2024/09/19 16:08:50 by angcampo         ###   ########.fr       */
+/*   Updated: 2024/09/19 16:57:50 by angcampo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 static char	*skip_spaces(char *str)
 {

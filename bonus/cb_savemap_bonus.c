@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cb_savemap.c                                       :+:      :+:    :+:   */
+/*   cb_savemap_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: angcampo <angcampo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 15:36:12 by angcampo          #+#    #+#             */
-/*   Updated: 2024/09/19 18:25:01 by angcampo         ###   ########.fr       */
+/*   Updated: 2024/09/19 18:25:12 by angcampo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "cub3d_bonus.h"
 
 static int	cb_save_settings(t_game *game, int fd)
 {
@@ -84,6 +84,8 @@ static void	cb_save_map2d(t_game *game, int fd,
 	while (line && ++i < n_map_lines)
 	{
 		game->map->map2d[i] = line;
+		if (ft_strlen(line) - 1 > game->map->cols)
+			game->map->cols = ft_strlen(line) - 1;
 		line = get_next_line(fd);
 	}
 	if (line)

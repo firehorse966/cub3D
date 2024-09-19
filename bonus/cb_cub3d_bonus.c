@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cb_cub3d_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: angcampo <angcampo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 12:49:07 by aiturria          #+#    #+#             */
-/*   Updated: 2024/09/08 14:21:27 by aiturria         ###   ########.fr       */
+/*   Updated: 2024/09/19 17:45:25 by angcampo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,76 +20,86 @@ void	cb_error(t_game *game, char *str)
 	exit (EXIT_FAILURE);
 }
 
-void	cb_deltexture(t_game *game)
+void	cb_free_textures(t_game *game)
 {
 	int	i;
 
+	if (!game || !game->texture)
+		return ;
 	i = 0;
-	while (i < 15)
+	while (i < 15 && game->texture->shotgun[i])
 		mlx_delete_texture(game->texture->shotgun[i++]);
 	i = 0;
-	while (i < 7)
+	while (i < 7 && game->texture->opening[i])
 		mlx_delete_texture(game->texture->opening[i++]);
-	mlx_delete_texture(game->texture->north);
-	mlx_delete_texture(game->texture->south);
-	mlx_delete_texture(game->texture->east);
-	mlx_delete_texture(game->texture->west);
-	mlx_delete_texture(game->texture->door1);
+	if (game->texture->north)
+		mlx_delete_texture(game->texture->north);
+	if (game->texture->south)
+		mlx_delete_texture(game->texture->south);
+	if (game->texture->east)
+		mlx_delete_texture(game->texture->east);
+	if (game->texture->west)
+		mlx_delete_texture(game->texture->west);
+	if (game->texture->door1)
+		mlx_delete_texture(game->texture->door1);
+	free(game->texture);
 }
 
 void	cb_freeall(t_game *game)
 {
 	int	i;
 
+	if (!game)
+		return ;
 	i = 0;
-	cb_deltexture(game);
-	while (game->map->map2d[i])
+	while (game->map && game->map->map2d && game->map->map2d[i])
 		free(game->map->map2d[i++]);
-	free(game->map->map2d);
-	free(game->map);
-	free(game->pyr);
-	free(game->ray);
-	free(game->texture);
-	mlx_delete_image(game->mlx42, game->img);
-	mlx_close_window(game->mlx42);
-	mlx_terminate(game->mlx42);
-}
-
-static void	cb_savemap(t_game *game, char *map)
-{
-	int		fd;
-	int		i;
-
-	i = 0;
-	game->map->rows = 11;
-	game->map->cols = 20;
-	game->map->map2d = malloc(sizeof(char **) * (game->map->rows + 1));
-	if (game->map->map2d == NULL)
-		cb_error(game, "Error: memory allocation failure");
-	fd = open(map, O_RDONLY);
-	if (fd == -1)
-		cb_error(game, "Error: file opening failure");
-	while (i < game->map->rows)
+	if (game->map->map2d)
+		free(game->map->map2d);
+	if (game->map)
+		free(game->map);
+	if (game->pyr)
+		free(game->pyr);
+	if (game->ray)
+		free(game->ray);
+	if (game->mlx42)
 	{
-		game->map->map2d[i] = get_next_line(fd);
-		if (game->map->map2d[i] == NULL)
-			cb_error(game, "Error: file reading failure");
-		i++;
+		mlx_delete_image(game->mlx42, game->img);
+		mlx_close_window(game->mlx42);
+		mlx_terminate(game->mlx42);
 	}
-	game->map->map2d[i] = NULL;
-	close(fd);
+	cb_free_textures(game);
+	free(game);
 }
+
+/*
+Checks if the file s1 ends in the extension s2
+@return 1 if yes, 0 if not
+*/
+static int	correct_extension(const char *s1, const char *s2)
+{
+	const char	*s;
+
+	s = ft_strrchr(s1, '.');
+	return (!ft_strncmp(s, s2, ft_strlen(s2)));
+}
+
+/*
+valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes
+--log-file=valgrind-out.txt ./cub3d_bonus maps/map2.cub
+*/
 
 int	main(int argc, char **argv)
 {
 	t_game	*game;
 
-	game = malloc(sizeof(t_game));
-	ft_memset(game, 0, sizeof(t_game));
-	game->map = malloc(sizeof(t_map));
-	ft_memset(game->map, 0, sizeof(t_map));
 	if (argc != 2)
-		cb_error(game, "Error: wrong number of arguments");
+		cb_error(NULL, "Error: wrong number of arguments");
+	if (!correct_extension(argv[1], ".cub"))
+		cb_error(NULL, "Error: wrong file extension (.cub)");
+	game = (t_game *)ft_calloc(1, sizeof(t_game));
+	if (!game)
+		cb_error(NULL, "Error: memory allocation failure");
 	cb_savemap(game, argv[1]);
 	cb_initgame(game);
 	cb_freeall(game);

@@ -6,7 +6,7 @@
 /*   By: angcampo <angcampo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/08 11:15:17 by aiturria          #+#    #+#             */
-/*   Updated: 2024/09/18 17:58:50 by angcampo         ###   ########.fr       */
+/*   Updated: 2024/09/19 16:11:48 by angcampo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,10 @@ void	cb_freeall(t_game *game)
 	free(game);
 }
 
+/*
+Checks if the file s1 ends in the extension s2
+@return 1 if yes, 0 if not
+*/
 static int	correct_extension(const char *s1, const char *s2)
 {
 	const char	*s;
@@ -69,6 +73,7 @@ static int	correct_extension(const char *s1, const char *s2)
 	s = ft_strrchr(s1, '.');
 	return (!ft_strncmp(s, s2, ft_strlen(s2)));
 }
+
 /*
 valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes
 --log-file=valgrind-out.txt ./cub3d maps/map1.cub
@@ -84,8 +89,7 @@ int	main(int argc, char **argv)
 		cb_error(NULL, "Error: wrong file extension (.cub)");
 	game = (t_game *)ft_calloc(1, sizeof(t_game));
 	if (!game)
-		return (cb_error(NULL, "Error: memory allocation failure"),
-			EXIT_FAILURE);
+		cb_error(NULL, "Error: memory allocation failure");
 	cb_savemap(game, argv[1]);
 	cb_initgame(game);
 	cb_freeall(game);

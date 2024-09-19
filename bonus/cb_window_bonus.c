@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cb_window_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: angcampo <angcampo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 14:13:51 by aiturria          #+#    #+#             */
-/*   Updated: 2024/09/11 14:23:04 by aiturria         ###   ########.fr       */
+/*   Updated: 2024/09/19 17:52:02 by angcampo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,6 @@ void	cb_newwindow(void *data)
 
 void	cb_loadtextures(t_game *game)
 {
-	game->texture->north = mlx_load_png("./images/metal352.png");
-	if (game->texture->north == NULL)
-		cb_error(game, "Error: loading MLX texture");
-	game->texture->south = mlx_load_png("./images/metal354.png");
-	if (game->texture->south == NULL)
-		cb_error(game, "Error: loading MLX texture");
-	game->texture->east = mlx_load_png("./images/metal353.png");
-	if (game->texture->east == NULL)
-		cb_error(game, "Error: loading MLX texture");
-	game->texture->west = mlx_load_png("./images/metal351.png");
-	if (game->texture->west == NULL)
-		cb_error(game, "Error: loading MLX texture");
 	game->texture->door1 = mlx_load_png("./images/metal_door1.png");
 	if (game->texture->door1 == NULL)
 		cb_error(game, "Error: loading MLX texture");
@@ -86,13 +74,10 @@ void	cb_initgame(t_game *game)
 		cb_error(game, "Error: parameters outside allowed range");
 	game->pyr = malloc(sizeof(t_player));
 	game->ray = malloc(sizeof(t_ray));
-	game->texture = malloc(sizeof(t_texture));
 	mlx_set_setting(MLX_STRETCH_IMAGE, true);
 	game->mlx42 = mlx_init(SCREEN_W, SCREEN_H, "cub 3D", true);
 	if (!game->mlx42)
 		cb_error(game, "Error: MLX42 window did not open");
-	game->map->playerx = 9;
-	game->map->playery = 5;
 	cb_playerangle(game);
 	cb_loadtextures(game);
 	cb_loadopening(game);

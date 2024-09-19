@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cb_drawing_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: angcampo <angcampo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 12:15:59 by aiturria          #+#    #+#             */
-/*   Updated: 2024/09/10 15:12:56 by aiturria         ###   ########.fr       */
+/*   Updated: 2024/09/19 19:20:44 by angcampo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
