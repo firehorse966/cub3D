@@ -6,7 +6,7 @@
 /*   By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 16:05:13 by aiturria          #+#    #+#             */
-/*   Updated: 2024/09/11 15:09:48 by aiturria         ###   ########.fr       */
+/*   Updated: 2024/09/20 16:00:34 by aiturria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,17 @@ void	cb_rotate(t_game *game, int side)
 	}
 }
 
+void	cb_keypress2(mlx_key_data_t keydata, void *data)
+{
+	t_game	*game;
+
+	game = (t_game *)data;
+	if (keydata.key == MLX_KEY_Z && (keydata.action == MLX_PRESS))
+		game->shoot = true;
+	else if (keydata.key == MLX_KEY_M && (keydata.action == MLX_PRESS))
+		game->minimap = !game->minimap;
+}
+
 void	cb_keypress(mlx_key_data_t keydata, void *data)
 {
 	t_game	*game;
@@ -154,6 +165,5 @@ void	cb_keypress(mlx_key_data_t keydata, void *data)
 	else if (keydata.key == MLX_KEY_S && (keydata.action == MLX_PRESS
 			|| keydata.action == MLX_REPEAT))
 		cb_movements(game, 4);
-	else if (keydata.key == MLX_KEY_Z && (keydata.action == MLX_PRESS))
-		game->shoot = true;
+	cb_keypress2(keydata, data);
 }

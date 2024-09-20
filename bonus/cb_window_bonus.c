@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cb_window_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angcampo <angcampo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 14:13:51 by aiturria          #+#    #+#             */
-/*   Updated: 2024/09/19 17:52:02 by angcampo         ###   ########.fr       */
+/*   Updated: 2024/09/20 15:52:06 by aiturria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	cb_newwindow(void *data)
 	cb_raycasting(game);
 	cb_shooting(game);
 	cb_closedoor(game, 0, 0);
-	cb_paintmap(game);
+	if (game->minimap)
+		cb_paintmap(game);
 	cb_opening(game);
 	mlx_image_to_window(game->mlx42, game->img, 0, 0);
 }
@@ -54,6 +55,7 @@ void	cb_playerangle(t_game *game)
 	game->shoot = 0;
 	game->open = 0;
 	game->time = 0;
+	game->minimap = 1;
 }
 
 void	cb_mousepointer(void *data)
@@ -62,7 +64,7 @@ void	cb_mousepointer(void *data)
 
 	game = data;
 	mlx_get_mouse_pos(game->mlx42, &game->pyr->mousex, &game->pyr->mousey);
-	game->pyr->angle += (double)(game->pyr->mousex - (SCREEN_W / 2)) * 0.0005;
+	game->pyr->angle -= (double)(game->pyr->mousex - (SCREEN_W / 2)) * 0.0005;
 	mlx_set_mouse_pos(game->mlx42, (SCREEN_W / 2), (SCREEN_H / 2));
 	if (mlx_is_mouse_down(game->mlx42, MLX_MOUSE_BUTTON_LEFT) == true)
 		game->shoot = true;

@@ -6,7 +6,7 @@
 /*   By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 11:30:23 by aiturria          #+#    #+#             */
-/*   Updated: 2024/09/11 15:06:24 by aiturria         ###   ########.fr       */
+/*   Updated: 2024/09/20 15:49:14 by aiturria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ void	cb_paintsquare(t_game *game, int x, int y, int color)
 	double	start;
 
 	start = 0.70;
-	newy = (SCREEN_H * start) + y;
-	while (newy < (SCREEN_H * start) + y + SIZE)
+	newy = (SCREEN_H * 0.85) + y;
+	while (newy < (SCREEN_H * 0.85) + y + SIZE * SCALE)
 	{
 		newx = (SCREEN_W * start) + x;
-		while (newx < (SCREEN_W * start) + x + SIZE)
+		while (newx < (SCREEN_W * start) + x + SIZE * SCALE)
 			mlx_put_pixel(game->img, newx++, newy, color);
 		newy++;
 	}
@@ -37,9 +37,9 @@ void	cb_paintplayer(t_game *game)
 	int	pyrx;
 	int	pyry;
 
-	pyrx = (SCREEN_W * 0.70) + game->pyr->pyrx;
-	pyry = (SCREEN_H * 0.70) + game->pyr->pyry;
-	rad = SIZE / 6;
+	pyrx = (SCREEN_W * 0.70) + game->pyr->pyrx * SCALE;
+	pyry = (SCREEN_H * 0.85) + game->pyr->pyry * SCALE;
+	rad = SIZE / 8;
 	y = -rad;
 	while (y <= rad)
 	{
@@ -65,10 +65,10 @@ void	cb_paintlooking(t_game *game)
 	angle = game->pyr->angle + ((M_PI / 180) * 30);
 	while (angle >= game->pyr->angle - ((M_PI / 180) * 30))
 	{
-		beginx = SCREEN_W * 0.70 + game->pyr->pyrx;
-		beginy = (SCREEN_H * 0.70) + game->pyr->pyry;
+		beginx = SCREEN_W * 0.70 + game->pyr->pyrx * SCALE;
+		beginy = (SCREEN_H * 0.85) + game->pyr->pyry * SCALE;
 		i = 0;
-		while (i < 110)
+		while (i < 50)
 		{
 			beginx += cos(angle);
 			beginy -= sin(angle);
@@ -91,11 +91,12 @@ void	cb_paintmap(t_game *game)
 		while (game->map->map2d[y][x] && game->map->map2d[y][x] != '\n')
 		{
 			if (game->map->map2d[y][x] == '1')
-				cb_paintsquare(game, x * SIZE, y * SIZE, BLACK);
+				cb_paintsquare(game, x * SIZE * SCALE, y * SIZE * SCALE, BLACK);
 			else if (game->map->map2d[y][x] == 'D')
-				cb_paintsquare(game, x * SIZE, y * SIZE, LIGHT_BLUE);
+				cb_paintsquare(game, x * SIZE * SCALE, y * SIZE * SCALE,
+					LIGHT_BLUE);
 			else
-				cb_paintsquare(game, x * SIZE, y * SIZE, GREY);
+				cb_paintsquare(game, x * SIZE * SCALE, y * SIZE * SCALE, GREY);
 			x++;
 		}
 		y++;

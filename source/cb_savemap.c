@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cb_savemap.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angcampo <angcampo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 15:36:12 by angcampo          #+#    #+#             */
-/*   Updated: 2024/09/19 18:25:01 by angcampo         ###   ########.fr       */
+/*   Updated: 2024/09/20 13:54:10 by aiturria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ static void	cb_save_map2d(t_game *game, int fd,
 	game->map->rows = n_map_lines;
 }
 
-void	cb_print_map(t_game *game)
+/* void	cb_print_map(t_game *game)
 {
 	int	i;
 
@@ -100,7 +100,7 @@ void	cb_print_map(t_game *game)
 	{
 		printf("%s", game->map->map2d[i++]);
 	}
-}
+} */
 
 void	cb_savemap(t_game *game, char *file)
 {

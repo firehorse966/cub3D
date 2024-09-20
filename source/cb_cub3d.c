@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cb_cub3d.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angcampo <angcampo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/08 11:15:17 by aiturria          #+#    #+#             */
-/*   Updated: 2024/09/19 16:11:48 by angcampo         ###   ########.fr       */
+/*   Updated: 2024/09/20 14:46:40 by aiturria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,6 @@ int	main(int argc, char **argv)
 	cb_savemap(game, argv[1]);
 	cb_initgame(game);
 	cb_freeall(game);
+	ft_printf("exit");
 	exit(EXIT_SUCCESS);
 }

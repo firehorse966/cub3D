@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angcampo <angcampo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 11:52:22 by aiturria          #+#    #+#             */
-/*   Updated: 2024/09/19 18:24:15 by angcampo         ###   ########.fr       */
+/*   Updated: 2024/09/20 14:19:04 by aiturria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # define FOV 60
 # define ROT_SPEED 0.045
 # define PLAYER_SPEED 4
+# define SCALE 0.50
 # define M_PI 3.14159265358979323846
 
 # define BLACK 0x000000FF
@@ -106,6 +107,7 @@ typedef struct s_game
 	t_ray			*ray;
 	t_player		*pyr;
 	t_texture		*texture;
+	int 			minimap;
 	int				shoot;
 	int				open;
 	double			time;
