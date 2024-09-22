@@ -6,7 +6,7 @@
 /*   By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 11:30:23 by aiturria          #+#    #+#             */
-/*   Updated: 2024/09/22 12:30:15 by aiturria         ###   ########.fr       */
+/*   Updated: 2024/09/22 15:18:04 by aiturria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,16 @@ void	cb_paintsquare(t_game *game, int x, int y, int color)
 	}
 }
 
-void	cb_paintplayer(t_game *game)
+void	cb_paintplayer(t_game *game, int x, int y)
 {
-	int	x;
-	int	y;
-	int	rad;
-	int	pyrx;
-	int	pyry;
+	int			rad;
+	int			pyrx;
+	int			pyry;
+	uint32_t	color;
 
+	color = YELLOW;
+	if (game->red == 1)
+		color = cb_shading(game, color);
 	pyrx = (SCREEN_W * 0.60) + game->pyr->pyrx * SCALE;
 	pyry = (SCREEN_H * 0.75) + game->pyr->pyry * SCALE;
 	rad = SIZE / 7;
@@ -47,7 +49,7 @@ void	cb_paintplayer(t_game *game)
 		while (x <= rad)
 		{
 			if (pow(x, 2) + pow(y, 2) <= pow(rad, 2))
-				mlx_put_pixel(game->img, pyrx + x, pyry + y, YELLOW);
+				mlx_put_pixel(game->img, pyrx + x, pyry + y, color);
 			x++;
 		}
 		y++;
@@ -56,12 +58,16 @@ void	cb_paintplayer(t_game *game)
 
 void	cb_paintlooking(t_game *game)
 {
-	double	angle;
-	double	beginx;
-	double	beginy;
-	double	i;
+	double		angle;
+	double		beginx;
+	double		beginy;
+	double		i;
+	uint32_t	color;
 
 	i = 0;
+	color = CYAN;
+	if (game->red == 1)
+		color = cb_shading(game, color);
 	angle = game->pyr->angle + ((M_PI / 180) * 30);
 	while (angle >= game->pyr->angle - ((M_PI / 180) * 30))
 	{
@@ -72,7 +78,7 @@ void	cb_paintlooking(t_game *game)
 		{
 			beginx += cos(angle);
 			beginy -= sin(angle);
-			mlx_put_pixel(game->img, beginx, beginy, CYAN);
+			mlx_put_pixel(game->img, beginx, beginy, color);
 			i++;
 		}
 		angle = angle - 0.10;
@@ -81,10 +87,14 @@ void	cb_paintlooking(t_game *game)
 
 void	cb_paintmap(t_game *game)
 {
-	int	x;
-	int	y;
+	int			x;
+	int			y;
+	uint32_t	col1;
 
 	y = 0;
+	col1 = GREY;
+	if (game->red == 1)
+		col1 = cb_shading(game, col1);
 	while (game->map->map2d[y])
 	{
 		x = 0;
@@ -93,15 +103,14 @@ void	cb_paintmap(t_game *game)
 			if (game->map->map2d[y][x] == '1')
 				cb_paintsquare(game, x * SIZE * SCALE, y * SIZE * SCALE, BLACK);
 			else if (game->map->map2d[y][x] == 'D')
-				cb_paintsquare(game, x * SIZE * SCALE, y * SIZE * SCALE,
-					LIGHT_BLUE);
+				cb_paintsquare(game, x * SIZE * SCALE, y * SIZE * SCALE, BLUE);
 			else if (game->map->map2d[y][x] != ' ')
-				cb_paintsquare(game, x * SIZE * SCALE, y * SIZE * SCALE, GREY);
+				cb_paintsquare(game, x * SIZE * SCALE, y * SIZE * SCALE, col1);
 			x++;
 		}
 		y++;
 	}
-	cb_paintplayer(game);
+	cb_paintplayer(game, 0, 0);
 	cb_paintlooking(game);
 }
 

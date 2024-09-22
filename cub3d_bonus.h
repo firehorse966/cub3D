@@ -6,7 +6,7 @@
 /*   By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 11:52:22 by aiturria          #+#    #+#             */
-/*   Updated: 2024/09/22 13:39:10 by aiturria         ###   ########.fr       */
+/*   Updated: 2024/09/22 15:10:05 by aiturria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,10 @@
 # define BLACK 0x000000FF
 # define GREY 0x808080FF
 # define LIGHT_BLUE 0xADD8E6FF
-# define BLUE 0x87CEEBFF
+# define BLUE 0x000080FF
 # define GREEN 0x008000FF
 # define CYAN 0x00FFFFFF
-# define MAGENTA 0xFF00FFFF
-# define PURPLE 0x800080FF
-# define PINK 0xFFC0CBFF
-# define BROWN 0xA52A2AFF
 # define YELLOW 0xFFFF00FF
-# define ORANGE 0xFF9300FF
-# define RED 0xFF0000FF
-# define WHITE 0xFFFFFFFF
 # define DARK_BROWN 0x4B2E1EFF
 # define DARK_GREY 0x2F2F2FFF
 
@@ -115,32 +108,33 @@ typedef struct s_game
 }	t_game;
 
 //general functions
-void	cb_error(t_game *game, char *str);
-void	cb_freeall(t_game *game);
+void		cb_error(t_game *game, char *str);
+void		cb_freeall(t_game *game);
 
 //parsing
-int		cb_save_settings_line(t_game *game, char *line, int i, int fd);
-void	cb_savemap(t_game *game, char *file);
-void	cb_check_map(t_game *game);
-int		cb_check_doors(t_game *game);
+int			cb_save_settings_line(t_game *game, char *line, int i, int fd);
+void		cb_savemap(t_game *game, char *file);
+void		cb_check_map(t_game *game);
+int			cb_check_doors(t_game *game);
 
 //execution
-void	cb_initgame(t_game *game);
-void	cb_raycasting(t_game *game);
-void	cb_drawing(t_game *game);
-void	cb_keypress(mlx_key_data_t keydata, void *data);
-int		cb_position(float angle, float *first, float *step, int check);
-int		cb_revbytes(int c);
-void	cb_rotate(t_game *game, int side);
-void	cb_paintmap(t_game *game);
-void	cb_paintboth(t_game *game, int top, int bottom);
-void	cb_opendoor(t_game *game);
-void	cb_closedoor(t_game *game, int x, int y);
-void	cb_paintgun(t_game *game, mlx_texture_t *texture, int newx, int newy);
-void	cb_keypress2(mlx_key_data_t keydata, void *data);
-void	cb_loadtextures(t_game *game);
-void	cb_shooting(t_game *game);
-void	cb_opening(t_game *game);
+void		cb_initgame(t_game *game);
+void		cb_raycasting(t_game *game);
+void		cb_drawing(t_game *game);
+void		cb_keypress(mlx_key_data_t keydata, void *data);
+int			cb_position(float angle, float *first, float *step, int check);
+int			cb_revbytes(int c);
+void		cb_rotate(t_game *game, int side);
+void		cb_paintmap(t_game *game);
+void		cb_paintboth(t_game *game, int top, int bottom);
+void		cb_opendoor(t_game *game);
+void		cb_closedoor(t_game *game, int x, int y);
+void		cb_paintgun(t_game *game, mlx_texture_t *texture, int newx,
+				int newy);
+void		cb_keypress2(mlx_key_data_t keydata, void *data);
+void		cb_loadtextures(t_game *game);
+void		cb_shooting(t_game *game);
+void		cb_opening(t_game *game);
 uint32_t	cb_shading(t_game *game, uint32_t color);
 
 #endif

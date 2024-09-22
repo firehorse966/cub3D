@@ -6,7 +6,7 @@
 /*   By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 14:52:51 by aiturria          #+#    #+#             */
-/*   Updated: 2024/09/22 12:37:54 by aiturria         ###   ########.fr       */
+/*   Updated: 2024/09/22 14:41:59 by aiturria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	cb_paintgun(t_game *game, mlx_texture_t *texture, int newx, int newy)
 		while (j < texture->width)
 		{
 			color = cb_revbytes(pixel[i * texture->width + j]);
+			if (game->red == 1)
+				color = cb_shading(game, color);
 			if ((color & 0xFF000000) != 0x00000000)
 				mlx_put_pixel(game->img, newx + j, newy + i, color);
 			j++;
