@@ -6,7 +6,7 @@
 /*   By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 12:49:07 by aiturria          #+#    #+#             */
-/*   Updated: 2024/09/20 14:47:09 by aiturria         ###   ########.fr       */
+/*   Updated: 2024/09/22 15:36:15 by aiturria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,6 @@ void	cb_freeall(t_game *game)
 	free(game);
 }
 
-/*
-Checks if the file s1 ends in the extension s2
-@return 1 if yes, 0 if not
-*/
 static int	correct_extension(const char *s1, const char *s2)
 {
 	const char	*s;
@@ -83,11 +79,6 @@ static int	correct_extension(const char *s1, const char *s2)
 	s = ft_strrchr(s1, '.');
 	return (!ft_strncmp(s, s2, ft_strlen(s2)));
 }
-
-/*
-valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes
---log-file=valgrind-out.txt ./cub3d_bonus maps/map2.cub
-*/
 
 int	main(int argc, char **argv)
 {

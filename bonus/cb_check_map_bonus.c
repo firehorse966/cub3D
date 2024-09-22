@@ -6,7 +6,7 @@
 /*   By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 18:00:33 by angcampo          #+#    #+#             */
-/*   Updated: 2024/09/20 13:59:30 by aiturria         ###   ########.fr       */
+/*   Updated: 2024/09/22 15:35:52 by aiturria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,14 +84,12 @@ static int	cb_map_is_closed(t_game *game)
 		j = -1;
 		while (++j < ft_strlen(game->map->map2d[i]) - 1)
 		{
-			//ft_printf("%c", game->map->map2d[i][j]);
 			c = game->map->map2d[i][j];
 			if ((c == '0' || c == 'D'
 					|| c == 'N' || c == 'S' || c == 'E' || c == 'W')
 				&& cb_check_surroundings(game, i, j))
 				return (0);
 		}
-		//ft_printf("\n");
 	}
 	return (1);
 }

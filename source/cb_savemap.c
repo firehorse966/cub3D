@@ -6,7 +6,7 @@
 /*   By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 15:36:12 by angcampo          #+#    #+#             */
-/*   Updated: 2024/09/20 13:54:10 by aiturria         ###   ########.fr       */
+/*   Updated: 2024/09/22 15:34:28 by aiturria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,17 +90,6 @@ static void	cb_save_map2d(t_game *game, int fd,
 		cb_error(game, "Error: map has not been fully read");
 	game->map->rows = n_map_lines;
 }
-
-/* void	cb_print_map(t_game *game)
-{
-	int	i;
-
-	i = 0;
-	while (game && game->map && game->map->map2d && game->map->map2d[i])
-	{
-		printf("%s", game->map->map2d[i++]);
-	}
-} */
 
 void	cb_savemap(t_game *game, char *file)
 {

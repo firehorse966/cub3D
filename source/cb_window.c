@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cb_window.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angcampo <angcampo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 14:13:51 by aiturria          #+#    #+#             */
-/*   Updated: 2024/09/18 18:16:15 by angcampo         ###   ########.fr       */
+/*   Updated: 2024/09/22 15:34:42 by aiturria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,24 +23,6 @@ void	cb_newwindow(void *data)
 	cb_raycasting(game);
 	mlx_image_to_window(game->mlx42, game->img, 0, 0);
 }
-
-/*
-void	cb_loadtextures(t_game *game)
-{
-	game->texture->north = mlx_load_png("./images/metal352.png");
-	if (game->texture->north == NULL)
-		cb_error(game, "Error: loading MLX texture");
-	game->texture->south = mlx_load_png("./images/metal354.png");
-	if (game->texture->south == NULL)
-		cb_error(game, "Error: loading MLX texture");
-	game->texture->east = mlx_load_png("./images/metal353.png");
-	if (game->texture->east == NULL)
-		cb_error(game, "Error: loading MLX texture");
-	game->texture->west = mlx_load_png("./images/metal351.png");
-	if (game->texture->west == NULL)
-		cb_error(game, "Error: loading MLX texture");
-}
-*/
 
 void	cb_playerangle(t_game *game)
 {

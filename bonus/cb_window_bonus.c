@@ -6,7 +6,7 @@
 /*   By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 14:13:51 by aiturria          #+#    #+#             */
-/*   Updated: 2024/09/22 13:17:26 by aiturria         ###   ########.fr       */
+/*   Updated: 2024/09/22 15:26:15 by aiturria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ void	cb_newwindow(void *data)
 		mlx_delete_image(game->mlx42, game->img);
 	game->img = mlx_new_image(game->mlx42, SCREEN_W, SCREEN_H);
 	cb_raycasting(game);
-	cb_shooting(game);
+	if (!game->open)
+		cb_shooting(game);
 	cb_closedoor(game, 0, 0);
 	if (game->minimap)
 		cb_paintmap(game);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cb_check_doors_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angcampo <angcampo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/19 18:11:48 by angcampo          #+#    #+#             */
-/*   Updated: 2024/09/19 19:13:52 by angcampo         ###   ########.fr       */
+/*   Updated: 2024/09/22 15:35:26 by aiturria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,6 @@ static int	cb_is_door_exit(char c)
 		|| c == 'D');
 }
 
-/*
-@return 1 if not ok, 0 if ok
-*/
 static int	cb_check_door_surroundings(t_game *game, int i, int j)
 {
 	char	**matrix;
@@ -37,10 +34,6 @@ static int	cb_check_door_surroundings(t_game *game, int i, int j)
 	return (1);
 }
 
-/*
-@param game with map that has correct characters and is closed
-@return 1 if doors are correct, 0 if not
-*/
 int	cb_check_doors(t_game *game)
 {
 	int	i;

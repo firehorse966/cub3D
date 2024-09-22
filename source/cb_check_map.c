@@ -6,7 +6,7 @@
 /*   By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 18:00:33 by angcampo          #+#    #+#             */
-/*   Updated: 2024/09/20 13:58:47 by aiturria         ###   ########.fr       */
+/*   Updated: 2024/09/22 15:33:00 by aiturria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,21 +46,6 @@ static int	check_characters(t_game *game)
 	}
 	return (1);
 }
-/*
-static int	cb_check_surroundings(t_game *game, int i, int j)
-{
-	return (i <= 0
-		|| j <= 0
-		|| i >= game->map->rows - 1
-		|| j >= ft_strlen(game->map->map2d[i]) - 2
-		|| j >= ft_strlen(game->map->map2d[i - 1] - 2)
-		|| j >= ft_strlen(game->map->map2d[i + 1] - 2)
-		|| game->map->map2d[i - 1][j] == ' '
-		|| game->map->map2d[i][j - 1] == ' '
-		|| game->map->map2d[i + 1][j] == ' '
-		|| game->map->map2d[i][j + 1] == ' ');
-}
-*/
 
 static int	cb_check_surroundings(t_game *game, int i, int j)
 {
@@ -99,13 +84,11 @@ static int	cb_map_is_closed(t_game *game)
 		j = -1;
 		while (++j < ft_strlen(game->map->map2d[i]) - 1)
 		{
-			//ft_printf("%c", game->map->map2d[i][j]);
 			c = game->map->map2d[i][j];
 			if ((c == '0' || c == 'N' || c == 'S' || c == 'E' || c == 'W')
 				&& cb_check_surroundings(game, i, j))
 				return (0);
 		}
-		//ft_printf("\n");
 	}
 	return (1);
 }

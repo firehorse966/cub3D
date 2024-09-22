@@ -6,7 +6,7 @@
 /*   By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/14 16:05:13 by aiturria          #+#    #+#             */
-/*   Updated: 2024/09/22 13:17:07 by aiturria         ###   ########.fr       */
+/*   Updated: 2024/09/22 15:36:58 by aiturria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,34 +84,6 @@ void	cb_movements(t_game *game, int move)
 	}
 	cb_movecheck(game, posx, posy);
 }
-
-/* void	cb_movements(t_game *game, int move)
-{
-	float	posx;
-	float	posy;
-
-	if (move == 1)
-	{
-		posx = -sin(game->pyr->angle) * PLAYER_SPEED;
-		posy = cos(game->pyr->angle) * PLAYER_SPEED;
-	}
-	if (move == 2)
-	{
-		posx = sin(game->pyr->angle) * PLAYER_SPEED;
-		posy = -cos(game->pyr->angle) * PLAYER_SPEED;
-	}
-	if (move == 3)
-	{
-		posx = -cos(game->pyr->angle) * PLAYER_SPEED;
-		posy = -sin(game->pyr->angle) * PLAYER_SPEED;
-	}
-	if (move == 4)
-	{
-		posx = cos(game->pyr->angle) * PLAYER_SPEED;
-		posy = sin(game->pyr->angle) * PLAYER_SPEED;
-	}
-	cb_movecheck(game, posx, posy);
-} */
 
 void	cb_rotate(t_game *game, int side)
 {
