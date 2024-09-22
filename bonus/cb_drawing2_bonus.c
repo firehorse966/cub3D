@@ -6,7 +6,7 @@
 /*   By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 10:16:51 by aiturria          #+#    #+#             */
-/*   Updated: 2024/09/20 15:58:33 by aiturria         ###   ########.fr       */
+/*   Updated: 2024/09/22 13:38:26 by aiturria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,23 @@
 
 void	cb_paintboth(t_game *game, int top, int bottom)
 {
-	int	i;
+	int			i;
+	uint32_t	floor;
+	uint32_t	ceiling;
 
 	i = 0;
+	floor = game->map->rgb[COLOR_F];
+	ceiling = game->map->rgb[COLOR_C];
+	if (game->red == 1)
+	{
+		floor = cb_shading(game, floor);
+		ceiling = cb_shading(game, ceiling);
+	}
 	while (i < top)
-		mlx_put_pixel(game->img, game->ray->index, i++, DARK_GREY);
+		mlx_put_pixel(game->img, game->ray->index, i++, ceiling);
 	i = bottom;
 	while (i < SCREEN_H)
-		mlx_put_pixel(game->img, game->ray->index, i++, DARK_BROWN);
+		mlx_put_pixel(game->img, game->ray->index, i++, floor);
 }
 
 int	cb_revbytes(int c)

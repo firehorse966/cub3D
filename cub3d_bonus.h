@@ -6,7 +6,7 @@
 /*   By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 11:52:22 by aiturria          #+#    #+#             */
-/*   Updated: 2024/09/20 14:19:04 by aiturria         ###   ########.fr       */
+/*   Updated: 2024/09/22 13:39:10 by aiturria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define FOV 60
 # define ROT_SPEED 0.045
 # define PLAYER_SPEED 4
-# define SCALE 0.50
+# define SCALE 0.60
 # define M_PI 3.14159265358979323846
 
 # define BLACK 0x000000FF
@@ -107,7 +107,8 @@ typedef struct s_game
 	t_ray			*ray;
 	t_player		*pyr;
 	t_texture		*texture;
-	int 			minimap;
+	int				minimap;
+	int				red;
 	int				shoot;
 	int				open;
 	double			time;
@@ -136,8 +137,10 @@ void	cb_paintboth(t_game *game, int top, int bottom);
 void	cb_opendoor(t_game *game);
 void	cb_closedoor(t_game *game, int x, int y);
 void	cb_paintgun(t_game *game, mlx_texture_t *texture, int newx, int newy);
-void	cb_loadopening(t_game *game);
+void	cb_keypress2(mlx_key_data_t keydata, void *data);
+void	cb_loadtextures(t_game *game);
 void	cb_shooting(t_game *game);
 void	cb_opening(t_game *game);
+uint32_t	cb_shading(t_game *game, uint32_t color);
 
 #endif

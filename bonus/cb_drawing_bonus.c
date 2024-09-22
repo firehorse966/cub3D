@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cb_drawing_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angcampo <angcampo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/09 12:15:59 by aiturria          #+#    #+#             */
-/*   Updated: 2024/09/19 19:20:44 by angcampo         ###   ########.fr       */
+/*   Updated: 2024/09/22 13:49:41 by aiturria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,11 @@ uint32_t	cb_shading(t_game *game, uint32_t color)
 	red = ((color >> 24) & 0xFF) * shading_factor;
 	green = ((color >> 16) & 0xFF) * shading_factor;
 	blue = ((color >> 8) & 0xFF) * shading_factor;
+	if (game->red == 1)
+	{
+		green = ((color >> 16) & 0xFF) * 0.3;
+		blue = ((color >> 8) & 0xFF) * 0.3;
+	}
 	color = (red << 24) | (green << 16) | (blue << 8) | (color & 0xFF);
 	return (color);
 }

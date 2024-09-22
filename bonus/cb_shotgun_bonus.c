@@ -6,7 +6,7 @@
 /*   By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 14:52:51 by aiturria          #+#    #+#             */
-/*   Updated: 2024/09/08 13:35:45 by aiturria         ###   ########.fr       */
+/*   Updated: 2024/09/22 12:37:54 by aiturria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ void	cb_loadshotgun(t_game *game)
 	}
 }
 
-void	cb_loadopening(t_game *game)
+void	cb_loadtextures(t_game *game)
 {
 	char		*opening[7];
 	int			i;
@@ -125,5 +125,8 @@ void	cb_loadopening(t_game *game)
 		if (!game->texture->opening[i++])
 			cb_error(game, "Error: loading MLX texture");
 	}
+	game->texture->door1 = mlx_load_png("./images/metal5.png");
+	if (game->texture->door1 == NULL)
+		cb_error(game, "Error: loading MLX texture");
 	cb_loadshotgun(game);
 }

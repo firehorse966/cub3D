@@ -1,7 +1,7 @@
-NO ./images/metal352.png
-SO ./images/metal351.png
-WE ./images/metal354.png
-EA ./images/metal353.png
+NO ./images/metal1.png
+SO ./images/metal2.png
+WE ./images/metal3.png
+EA ./images/metal4.png
 
 F 220,100,0
 C 0,255,255

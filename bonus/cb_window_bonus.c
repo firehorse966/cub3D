@@ -6,7 +6,7 @@
 /*   By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/31 14:13:51 by aiturria          #+#    #+#             */
-/*   Updated: 2024/09/20 15:52:06 by aiturria         ###   ########.fr       */
+/*   Updated: 2024/09/22 13:17:26 by aiturria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,6 @@ void	cb_newwindow(void *data)
 	mlx_image_to_window(game->mlx42, game->img, 0, 0);
 }
 
-void	cb_loadtextures(t_game *game)
-{
-	game->texture->door1 = mlx_load_png("./images/metal_door1.png");
-	if (game->texture->door1 == NULL)
-		cb_error(game, "Error: loading MLX texture");
-}
-
 void	cb_playerangle(t_game *game)
 {
 	char	c;
@@ -56,6 +49,20 @@ void	cb_playerangle(t_game *game)
 	game->open = 0;
 	game->time = 0;
 	game->minimap = 1;
+	game->red = 0;
+}
+
+void	cb_keypress2(mlx_key_data_t keydata, void *data)
+{
+	t_game	*game;
+
+	game = (t_game *)data;
+	if (keydata.key == MLX_KEY_Z && (keydata.action == MLX_PRESS))
+		game->shoot = true;
+	else if (keydata.key == MLX_KEY_M && (keydata.action == MLX_PRESS))
+		game->minimap = !game->minimap;
+	else if (keydata.key == MLX_KEY_R && (keydata.action == MLX_PRESS))
+		game->red = !game->red;
 }
 
 void	cb_mousepointer(void *data)
@@ -82,7 +89,6 @@ void	cb_initgame(t_game *game)
 		cb_error(game, "Error: MLX42 window did not open");
 	cb_playerangle(game);
 	cb_loadtextures(game);
-	cb_loadopening(game);
 	mlx_key_hook(game->mlx42, &cb_keypress, game);
 	mlx_loop_hook(game->mlx42, &cb_newwindow, game);
 	mlx_set_cursor_mode(game->mlx42, MLX_MOUSE_HIDDEN);

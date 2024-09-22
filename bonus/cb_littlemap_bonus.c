@@ -6,7 +6,7 @@
 /*   By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/25 11:30:23 by aiturria          #+#    #+#             */
-/*   Updated: 2024/09/20 15:49:14 by aiturria         ###   ########.fr       */
+/*   Updated: 2024/09/22 12:30:15 by aiturria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	cb_paintsquare(t_game *game, int x, int y, int color)
 	int		newy;
 	double	start;
 
-	start = 0.70;
-	newy = (SCREEN_H * 0.85) + y;
-	while (newy < (SCREEN_H * 0.85) + y + SIZE * SCALE)
+	start = 0.60;
+	newy = (SCREEN_H * 0.75) + y;
+	while (newy < (SCREEN_H * 0.75) + y + SIZE * SCALE)
 	{
 		newx = (SCREEN_W * start) + x;
 		while (newx < (SCREEN_W * start) + x + SIZE * SCALE)
@@ -37,9 +37,9 @@ void	cb_paintplayer(t_game *game)
 	int	pyrx;
 	int	pyry;
 
-	pyrx = (SCREEN_W * 0.70) + game->pyr->pyrx * SCALE;
-	pyry = (SCREEN_H * 0.85) + game->pyr->pyry * SCALE;
-	rad = SIZE / 8;
+	pyrx = (SCREEN_W * 0.60) + game->pyr->pyrx * SCALE;
+	pyry = (SCREEN_H * 0.75) + game->pyr->pyry * SCALE;
+	rad = SIZE / 7;
 	y = -rad;
 	while (y <= rad)
 	{
@@ -65,10 +65,10 @@ void	cb_paintlooking(t_game *game)
 	angle = game->pyr->angle + ((M_PI / 180) * 30);
 	while (angle >= game->pyr->angle - ((M_PI / 180) * 30))
 	{
-		beginx = SCREEN_W * 0.70 + game->pyr->pyrx * SCALE;
-		beginy = (SCREEN_H * 0.85) + game->pyr->pyry * SCALE;
+		beginx = SCREEN_W * 0.60 + game->pyr->pyrx * SCALE;
+		beginy = (SCREEN_H * 0.75) + game->pyr->pyry * SCALE;
 		i = 0;
-		while (i < 50)
+		while (i < 70)
 		{
 			beginx += cos(angle);
 			beginy -= sin(angle);
@@ -95,7 +95,7 @@ void	cb_paintmap(t_game *game)
 			else if (game->map->map2d[y][x] == 'D')
 				cb_paintsquare(game, x * SIZE * SCALE, y * SIZE * SCALE,
 					LIGHT_BLUE);
-			else
+			else if (game->map->map2d[y][x] != ' ')
 				cb_paintsquare(game, x * SIZE * SCALE, y * SIZE * SCALE, GREY);
 			x++;
 		}
