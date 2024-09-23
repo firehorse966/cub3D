@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cb_cub3d_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: angcampo <angcampo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/04 12:49:07 by aiturria          #+#    #+#             */
-/*   Updated: 2024/09/22 15:36:15 by aiturria         ###   ########.fr       */
+/*   Updated: 2024/09/23 19:29:26 by angcampo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,15 @@ void	cb_freeall(t_game *game)
 static int	correct_extension(const char *s1, const char *s2)
 {
 	const char	*s;
+	int			len;
 
 	s = ft_strrchr(s1, '.');
-	return (!ft_strncmp(s, s2, ft_strlen(s2)));
+	if (!s)
+		return (0);
+	len = ft_strlen(s);
+	if (len < ft_strlen(s2))
+		len = ft_strlen(s2);
+	return (!ft_strncmp(s, s2, len));
 }
 
 int	main(int argc, char **argv)
