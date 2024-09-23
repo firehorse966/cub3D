@@ -6,7 +6,7 @@
 /*   By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 11:52:22 by aiturria          #+#    #+#             */
-/*   Updated: 2024/09/22 15:10:05 by aiturria         ###   ########.fr       */
+/*   Updated: 2024/09/23 16:13:08 by aiturria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
 # define FOV 60
 # define ROT_SPEED 0.045
 # define PLAYER_SPEED 4
-# define SCALE 0.60
 # define M_PI 3.14159265358979323846
 
 # define BLACK 0x000000FF
@@ -89,6 +88,7 @@ typedef struct s_map
 	int				playery;
 	int				width;
 	int				height;
+	float			scale;
 	unsigned int	rgb[2];
 }	t_map;
 

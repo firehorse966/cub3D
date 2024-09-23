@@ -6,7 +6,7 @@
 /*   By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 15:36:12 by angcampo          #+#    #+#             */
-/*   Updated: 2024/09/22 15:37:32 by aiturria         ###   ########.fr       */
+/*   Updated: 2024/09/23 16:08:20 by aiturria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,20 @@ static void	cb_save_map2d(t_game *game, int fd,
 	game->map->rows = n_map_lines;
 }
 
+float	cb_getscale(t_game *game)
+{
+	float	x;
+	float	y;
+
+	if (!game || !game->map)
+		return (1);
+	x = 30 / (float) game->map->cols;
+	y = 10 / (float) game->map->rows;
+	if (x < y)
+		return (x);
+	return (y);
+}
+
 void	cb_savemap(t_game *game, char *file)
 {
 	int	fd;
@@ -115,4 +129,5 @@ void	cb_savemap(t_game *game, char *file)
 	cb_save_map2d(game, fd, n_setting_lines, n_map_lines);
 	close(fd);
 	cb_check_map(game);
+	game->map->scale = cb_getscale(game);
 }
