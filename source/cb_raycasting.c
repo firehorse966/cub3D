@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cb_raycasting.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angcampo <angcampo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 11:52:48 by aiturria          #+#    #+#             */
-/*   Updated: 2024/09/23 19:25:14 by angcampo         ###   ########.fr       */
+/*   Updated: 2024/09/25 10:35:33 by aiturria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,12 @@ int	cb_wallcheck(t_game *game, float x, float y, int pos)
 	if (mapx >= ft_strlen(game->map->map2d[mapy]))
 		return (0);
 	if (pos == 1 && (game->map->map2d[mapy - 1][mapx] == '1'
-		|| game->map->map2d[mapy][mapx] == '1'))
+		|| game->map->map2d[mapy][mapx] == '1'
+		|| game->map->map2d[mapy][mapx] == ' '))
 		return (0);
 	else if (pos == 2 && (game->map->map2d[mapy][mapx - 1] == '1'
-		|| game->map->map2d[mapy][mapx] == '1'))
+		|| game->map->map2d[mapy][mapx] == '1'
+		|| game->map->map2d[mapy][mapx] == ' '))
 		return (0);
 	return (1);
 }

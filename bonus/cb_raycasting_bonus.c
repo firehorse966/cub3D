@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cb_raycasting_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: angcampo <angcampo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aiturria <aiturria@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/29 11:52:48 by aiturria          #+#    #+#             */
-/*   Updated: 2024/09/23 19:26:06 by angcampo         ###   ########.fr       */
+/*   Updated: 2024/09/25 10:36:48 by aiturria         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ int	cb_wallcheckhorz(t_game *game, float x, float y)
 	if (mapx >= ft_strlen(game->map->map2d[mapy]))
 		return (0);
 	if (game->map->map2d[mapy - 1][mapx] == '1'
-		|| game->map->map2d[mapy][mapx] == '1')
+		|| game->map->map2d[mapy][mapx] == '1'
+		|| game->map->map2d[mapy][mapx] == ' ')
 		return (0);
 	else if (game->map->map2d[mapy - 1][mapx] == 'D'
 		|| game->map->map2d[mapy][mapx] == 'D')
@@ -51,7 +52,8 @@ int	cb_wallcheckvert(t_game *game, float x, float y)
 	if (mapx >= ft_strlen(game->map->map2d[mapy]))
 		return (0);
 	if (game->map->map2d[mapy][mapx - 1] == '1'
-		|| game->map->map2d[mapy][mapx] == '1')
+		|| game->map->map2d[mapy][mapx] == '1'
+		|| game->map->map2d[mapy][mapx] == ' ')
 		return (0);
 	else if (game->map->map2d[mapy][mapx - 1] == 'D'
 		|| game->map->map2d[mapy][mapx] == 'D')
